@@ -1,0 +1,25 @@
+# Sublayer Backup
+
+Does a mysqldump of a remote database and uploads the mysqldump with a timestamp to a S3 bucket.
+
+## Usage 
+
+```
+docker run -e MYSQL_HOST=<MYSQL_HOST_HERE> -e MYSQL_PORT=<MYSQL_PORT_HERE> -e MYSQL_USER=<MYSQL_USER_HERE> -e MYSQL_DATABASE=<MYSQL_DATABASE_HERE> -e MYSQL_PASSWORD=<MYSQL_PASSWORD_HERE> -e AWS_ACCESS_KEY=<AWS_ACCESS_KEY_HERE> -e AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY_HERE> -e AWS_BUCKET_NAME=<AWS_BUCKET_NAME_HERE> sublayer/backup:latest
+```
+
+## Environment variables
+
+### MySQL
+
+- MYSQL_HOST
+- MYSQL_PORT
+- MYSQL_USER
+- MYSQL_DATABASE
+- MYSQL_PASSWORD
+
+### S3 Bucket
+
+- AWS_ACCESS_KEY
+- AWS_SECRET_ACCESS_KEY
+- AWS_BUCKET_NAME
