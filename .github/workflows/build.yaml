@@ -12,8 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
-        working-directory: ./
-        run: docker build . --tag sublayer/backup:${{ steps.vars.outputs.tag }}
+        run: docker build --tag sublayer/backup:${{ steps.vars.outputs.tag }}
       - name: Login into Docker Registry
         run: docker login -u sublayer -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image to Docker Registry
