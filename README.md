@@ -38,7 +38,7 @@ name: Backup
 
 on:
   schedule:
-    - cron: 6 3 * * *" # every morning at 03:06am
+    - cron: "6 3 * * *" # every morning at 03:06am
 
 jobs:
   backup:
