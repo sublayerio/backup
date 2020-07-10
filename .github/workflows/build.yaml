@@ -11,8 +11,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Set environment variables
+        id: vars
+        run: |
+          echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+          echo ::set-output name=releaseDate::$(date -u +"%FT%T.000Z")
       - name: Build the Docker image
-        run: docker build --tag sublayer/backup:${{ steps.vars.outputs.tag }}
+        run: docker build --tag sublayer/backup:${{ steps.vars.outputs.tag }} .
       - name: Login into Docker Registry
         run: docker login -u sublayer -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image to Docker Registry
