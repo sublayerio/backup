@@ -6,12 +6,13 @@ on:
       - created
 
 jobs:
-  build-webpage-to-pdf-api:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
+        working-directory: ./
         run: docker build . --tag sublayer/backup:${{ steps.vars.outputs.tag }}
       - name: Login into Docker Registry
         run: docker login -u sublayer -p ${{ secrets.DOCKER_PASSWORD }}
